@@ -1,0 +1,44 @@
+pa_task_index:
+    path:     /index
+    defaults: { _controller: PAUserBundle:Task:index }
+
+pa_task_add:
+    path:     /add
+    defaults: { _controller: PAUserBundle:Task:add }
+
+pa_task_create:
+    path:     /create
+    defaults: { _controller: PAUserBundle:Task:create }
+    methods:  POST
+
+pa_task_edit:
+    path:     /edit/{id}
+    defaults: { _controller: PAUserBundle:Task:edit }
+
+pa_task_update:
+    path:     /update/{id}
+    defaults: { _controller: PAUserBundle:Task:update }
+    methods:  [POST, PUT]
+
+pa_task_view:
+    path:     /view/{id}
+    defaults: { _controller: PAUserBundle:Task:view }
+
+pa_task_delete:
+    path:     /delete/{id}
+    defaults: { _controller: PAUserBundle:Task:delete }
+    methods:  [POST, DELETE]
+
+pa_task_redirect_add:
+    path: /create
+    defaults:
+        _controller: PAUserBundle:Task:add
+        path: /add
+        permanent: true
+
+pa_task_redirect_edit:
+    path: /update/{id}
+    defaults:
+        _controller: PAUserBundle:Task:edit
+        path: /edit/{id}
+        permanent: true

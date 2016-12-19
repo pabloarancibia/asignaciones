@@ -19,7 +19,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User implements UserInterface
 {
     /**
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="task", mappedBy="user")
     */
     protected $tasks;
     
@@ -354,37 +354,4 @@ class User implements UserInterface
      {
          
      }
-
-    /**
-     * Add tasks
-     *
-     * @param \PA\UserBundle\Entity\task $tasks
-     * @return User
-     */
-    public function addTask(\PA\UserBundle\Entity\task $tasks)
-    {
-        $this->tasks[] = $tasks;
-
-        return $this;
-    }
-
-    /**
-     * Remove tasks
-     *
-     * @param \PA\UserBundle\Entity\task $tasks
-     */
-    public function removeTask(\PA\UserBundle\Entity\task $tasks)
-    {
-        $this->tasks->removeElement($tasks);
-    }
-
-    /**
-     * Get tasks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
-    }
 }
