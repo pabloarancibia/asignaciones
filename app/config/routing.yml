@@ -1,0 +1,7 @@
+pa_user:
+    resource: "@PAUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,25 @@
+{# //iniciamos el formulario y recibe el form q estamos enviando desde view#}
+{{ form_start(form, {'atrr':{'id': id|default('form')}}) }}
+
+{# //para q nos elavore el formulario#}
+    {{ form_widget(form) }}    
+    
+    {% if with_submit is not defined or with_submit == true %}
+    <input type="button" value="{{ 'Delete user'|trans }}" class="btn btn-lg btn-block btn-danger" onclick="confirmDelete()" >
+    {% endif %}
+     
+
+{{form_end(form)}}
+
+<script>
+    var message = '{{message}}';
+    function confirmDelete()
+    {
+        bootbox.confirm(message, function(result){
+            if (result==true)
+            {
+                document.form.submit();
+            }
+        });
+    }
+</script>
