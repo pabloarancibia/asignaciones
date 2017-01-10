@@ -63,4 +63,108 @@ class TaskController extends Controller
         return $this->render('PAUserBundle:Task:add.html.twig', array('form'=>$form->createView()));
         //redirect('EMMUserBundle:Task:add.html.twig', array('form' => $form->createView()));
     }
+    
+    public function viewAction($id)
+    {
+        $task = $this->getDoctrine()->getRepository('PAUserBundle:Task')->find($id);
+    
+        if(!$task)
+        {
+            throw $this->createNotFoundException('La tarea no existe');
+        }
+        
+        $deleteForm = $this->createCustomForm($task->getId(),'DELETE', 'pa_task_delete');
+        
+        $user = $task->getUser();
+        
+        return $this->render('PAUserBundle:Task:view.html.twig',array('task'=>$task, 'user'=>$user,'delete_form'=>$deleteForm->createView()));
+    }
+    
+    public function editAction($id)
+    {
+        //aca tdo lo mismo, recuperamos la tarea con el id
+        $em = $this->getDoctrine()->getManager();
+        
+        $task = $em->getRepository('PAUserBundle:Task')->find($id);
+        
+         if(!$task)
+        {
+            throw $this->createNotFoundException('La tarea no existe');
+        }
+        
+        //ahora llamamos al metodo donde creamos el formulario para editar la tarea
+        $form = $this->createEditForm($task);
+        
+        return $this->render('PAUserBundle:Task:edit.html.twig', array('task'=>$task,'form'=>$form->createView()));
+        
+    }
+    
+    private function createEditForm($entity)
+    {
+        $form = $this->createForm(new TaskType(),$entity,array(
+            'action' => $this->generateUrl('pa_task_update',array('id' => $entity->getId())),
+            'method' => 'PUT'
+        ));
+        
+        return $form;
+    }
+    
+    public function updateAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $task = $em->getRepository('PAUserBundle:Task')->find($id);
+        
+        if(!$task)
+        {
+            throw $this->createNotFoundException('La tarea no existe');
+        }
+        
+        $form = $this->createEditForm($task);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() and $form->isValid())
+        {
+            $task->setStatus(0);
+            $em->flush();
+            $this->addFlash('mensaje', 'La tarea ha sido modificada');
+            return $this->redirectToRoute('pa_task_edit', array('id' => $task->getId()));
+        }
+        
+        return $this->render('PAUserBundle:Task:edit.html.twig',array('task'=>$task, 'form'=>$form->createView()));
+    }
+    
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $task = $em->getRepository('PAUserBundle:Task')->find($id);
+        
+        if(!$task)
+        {
+            throw $this->createNotFoundException('task not found');
+        }
+        
+        $form = $this->createCustomForm($task->getId(), 'DELETE', 'pa_task_delete');
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() and $form->isValid())
+        {
+            $em->remove($task);
+            $em->flush();
+            
+            $this->addFlash('mensaje', 'Tarea Eliminada');
+            
+            return $this->redirectToRoute('pa_task_index');
+        }
+    }
+    
+    private function createCustomForm($id, $method, $route)
+    {
+        return $this->createFormBuilder()
+        ->setAction($this->generateUrl($route, array('id' => $id)))
+             ->setMethod($method)
+             ->getForm();
+        
+    }
 }

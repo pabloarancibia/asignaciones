@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>{{ task.title }}</h2>
+	        <br>
+	        <dl>
+	            <dt>Descripcion</dt>
+	            <dd>
+	                {{ task.description }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Usuario</dt>
+	            <dd>
+	                {{ user.fullName }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Estado</dt>
+	            <dd>
+                	{% if task.status == 0 %}
+                	    <span class="text-danger">Espera</span>
+                	{% elseif task.status == 1 %}
+                	    <span class="text-success">Finalizado</span>
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Creada</dt>
+	            <dd>
+	                {{ task.createdAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Actualizada</dt>
+	            <dd>
+	                {{ task.updatedAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	        <h3>Acciones:</h3>
+	        <p>
+	            <a href="{{ path('pa_task_edit', {id: task.id}) }}" class="btn btn-primary btn-lg btn-block">
+	                <span class="glyphicon glyphicon-edit"></span>
+	                Edit task
+	            </a>
+	        </p>
+	        <p>
+	            {{ include('PAUserBundle:Task:forms/form.html.twig', { form: delete_form, message: 'Seguro desea eliminar ?' }) }}
+	        </p>
+	    </div>
+	</div>
+{% endblock %}
