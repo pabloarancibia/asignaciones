@@ -485,4 +485,70 @@ class User extends \PA\UserBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
         return parent::getFullName();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function serialize()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'serialize', array());
+
+        return parent::serialize();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function unserialize($serialized)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'unserialize', array($serialized));
+
+        return parent::unserialize($serialized);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAccountNonExpired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAccountNonExpired', array());
+
+        return parent::isAccountNonExpired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAccountNonLocked()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAccountNonLocked', array());
+
+        return parent::isAccountNonLocked();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isCredentialsNonExpired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isCredentialsNonExpired', array());
+
+        return parent::isCredentialsNonExpired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isEnabled()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isEnabled', array());
+
+        return parent::isEnabled();
+    }
+
 }

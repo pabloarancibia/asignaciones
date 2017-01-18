@@ -15,11 +15,11 @@ class __TwigTemplate_a92b3d7f3444dd9eaaeecb5e1aa1d01aaff64c4781ff1dc7f0917f60f29
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_40d55eadcedd012df585b51dfc289186a7c55bef72102807ad1cd4ed75613d9e = $this->env->getExtension("native_profiler");
-        $__internal_40d55eadcedd012df585b51dfc289186a7c55bef72102807ad1cd4ed75613d9e->enter($__internal_40d55eadcedd012df585b51dfc289186a7c55bef72102807ad1cd4ed75613d9e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PAUserBundle:User:forms/form.html.twig"));
+        $__internal_595dc882bb26e4c008ab1c7f252b8a5eae5a256a3e045bc46106852ed6bef01a = $this->env->getExtension("native_profiler");
+        $__internal_595dc882bb26e4c008ab1c7f252b8a5eae5a256a3e045bc46106852ed6bef01a->enter($__internal_595dc882bb26e4c008ab1c7f252b8a5eae5a256a3e045bc46106852ed6bef01a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PAUserBundle:User:forms/form.html.twig"));
 
         // line 2
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("atrr" => array("id" => ((array_key_exists("id", $context)) ? (_twig_default_filter((isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "form")) : ("form")))));
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("attr" => array("id" => ((array_key_exists("id", $context)) ? (_twig_default_filter((isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "form")) : ("form")))));
         echo "
 
 ";
@@ -29,17 +29,17 @@ class __TwigTemplate_a92b3d7f3444dd9eaaeecb5e1aa1d01aaff64c4781ff1dc7f0917f60f29
         echo "    
     
     ";
-        // line 7
+        // line 8
+        echo "    ";
         if (( !array_key_exists("with_submit", $context) || ((isset($context["with_submit"]) ? $context["with_submit"] : $this->getContext($context, "with_submit")) == true))) {
-            // line 8
+            // line 9
             echo "    <input type=\"button\" value=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Delete user"), "html", null, true);
             echo "\" class=\"btn btn-lg btn-block btn-danger\" onclick=\"confirmDelete()\" >
     ";
         }
-        // line 10
-        echo "     
-
+        // line 11
+        echo "
 ";
         // line 12
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
@@ -61,7 +61,7 @@ class __TwigTemplate_a92b3d7f3444dd9eaaeecb5e1aa1d01aaff64c4781ff1dc7f0917f60f29
     }
 </script>";
         
-        $__internal_40d55eadcedd012df585b51dfc289186a7c55bef72102807ad1cd4ed75613d9e->leave($__internal_40d55eadcedd012df585b51dfc289186a7c55bef72102807ad1cd4ed75613d9e_prof);
+        $__internal_595dc882bb26e4c008ab1c7f252b8a5eae5a256a3e045bc46106852ed6bef01a->leave($__internal_595dc882bb26e4c008ab1c7f252b8a5eae5a256a3e045bc46106852ed6bef01a_prof);
 
     }
 
@@ -77,6 +77,6 @@ class __TwigTemplate_a92b3d7f3444dd9eaaeecb5e1aa1d01aaff64c4781ff1dc7f0917f60f29
 
     public function getDebugInfo()
     {
-        return array (  51 => 15,  45 => 12,  41 => 10,  35 => 8,  33 => 7,  27 => 5,  22 => 2,);
+        return array (  51 => 15,  45 => 12,  42 => 11,  36 => 9,  33 => 8,  27 => 5,  22 => 2,);
     }
 }

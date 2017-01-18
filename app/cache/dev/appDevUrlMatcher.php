@@ -257,6 +257,52 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'pa_task_redirect_edit')), array (  '_controller' => 'PA\\UserBundle\\Controller\\TaskController::editAction',  'path' => '/edit/{id}',  'permanent' => true,));
             }
 
+            // pa_task_custom
+            if ($pathinfo === '/task/custom') {
+                return array (  '_controller' => 'PA\\UserBundle\\Controller\\TaskController::customAction',  '_route' => 'pa_task_custom',);
+            }
+
+            // pa_task_process
+            if (0 === strpos($pathinfo, '/task/process') && preg_match('#^/task/process/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_pa_task_process;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pa_task_process')), array (  '_controller' => 'PA\\UserBundle\\Controller\\TaskController::processAction',));
+            }
+            not_pa_task_process:
+
+        }
+
+        // pa_user_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'pa_user_homepage');
+            }
+
+            return array (  '_controller' => 'PA\\UserBundle\\Controller\\UserController::homeAction',  '_route' => 'pa_user_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // pa_user_login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'PA\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'pa_user_login',);
+                }
+
+                // pa_user_login_check
+                if ($pathinfo === '/login_check') {
+                    return array (  '_controller' => 'PA\\UserBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'pa_user_login_check',);
+                }
+
+            }
+
+            // pa_user_logout
+            if ($pathinfo === '/logout') {
+                return array('_route' => 'pa_user_logout');
+            }
+
         }
 
         // homepage

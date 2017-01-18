@@ -42,3 +42,12 @@ pa_task_redirect_edit:
         _controller: PAUserBundle:Task:edit
         path: /edit/{id}
         permanent: true
+        
+pa_task_custom:
+    path:     /custom
+    defaults: { _controller: PAUserBundle:Task:custom }
+    
+pa_task_process:
+    path: /process/{id}
+    defaults: {_controller: PAUserBundle:Task:process}
+    methods: [POST, PUT]

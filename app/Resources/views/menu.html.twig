@@ -14,27 +14,35 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        
+        {% if is_granted('ROLE_ADMIN') %}
+        
         <li class="active"><a href="{{path('pa_user_index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
-        {#<li><a href="#">Link</a></li>#}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{path('pa_user_index')}}">Lista</a></li>
-            <li><a href="{{path('pa_user_add')}}">Agregar</a></li>
-            {#<li><a href="#">Something else here</a></li>#}
-            {#<li role="separator" class="divider"></li>#}
-            {#<li><a href="#">Separated link</a></li>#}
-            {#<li role="separator" class="divider"></li>#}
-            {#<li><a href="#">One more separated link</a></li>#}
+            <li><a href="{{path('pa_user_index')}}">Lista Usuarios</a></li>
+            <li><a href="{{path('pa_user_add')}}">Agregar Usuarios</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans %} Task {% endtrans %} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{path('pa_task_index')}}">{% trans %} List Tasks {% endtrans %}</a></li>
-            <li><a href="{{path('pa_task_add')}}">{% trans %} New Task {% endtrans %}</a></li>
+            <li><a href="{{path('pa_task_index')}}">{% trans %} Lista Tareas {% endtrans %}</a></li>
+            <li><a href="{{path('pa_task_add')}}">{% trans %} Nueva Tarea {% endtrans %}</a></li>
           </ul>
         </li>
+        {% endif %}
+        
+        {% if is_granted('ROLE_USER') %}
+        <li><a href="{{path('pa_task_custom')}}">{% trans %} Mis Tareas {% endtrans %}</a></li>
+        {% endif %}
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+                 <li>
+                     <a href="{{ path('pa_user_logout') }}">Salir</a>
+                 </li>
       </ul>
       {#<form class="navbar-form navbar-left">#}
       {#  <div class="form-group">#}

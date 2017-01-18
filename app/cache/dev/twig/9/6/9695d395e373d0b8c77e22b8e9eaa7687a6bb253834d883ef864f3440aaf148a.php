@@ -15,18 +15,31 @@ class __TwigTemplate_9695d395e373d0b8c77e22b8e9eaa7687a6bb253834d883ef864f3440aa
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d35f59d0f3fa7100b1e72499024339df8dfeb493735925c97db1c3f08882c0ae = $this->env->getExtension("native_profiler");
-        $__internal_d35f59d0f3fa7100b1e72499024339df8dfeb493735925c97db1c3f08882c0ae->enter($__internal_d35f59d0f3fa7100b1e72499024339df8dfeb493735925c97db1c3f08882c0ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PAUserBundle:Task:messages/success.html.twig"));
+        $__internal_02b20c7f4a57a5ba8390c57615cf578d67da013360091dcfe1fc7fb8dc892c48 = $this->env->getExtension("native_profiler");
+        $__internal_02b20c7f4a57a5ba8390c57615cf578d67da013360091dcfe1fc7fb8dc892c48->enter($__internal_02b20c7f4a57a5ba8390c57615cf578d67da013360091dcfe1fc7fb8dc892c48_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PAUserBundle:Task:messages/success.html.twig"));
 
         // line 1
         echo " ";
+        if ( !array_key_exists("flashMessage", $context)) {
+            // line 2
+            echo "     <div class\"alert alert-success hidden\" id=\"message\" role=\"alert\">
+         <div class=\"container\">
+              <span id=\"user-message\"></span>
+         </div>
+     </div>
+ ";
+        }
+        // line 8
+        echo "
+ ";
+        // line 9
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "mensaje"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 2
+            // line 10
             echo "    \t<div class=\"alert alert-success\" role=\"alert\">
     \t\t<div class=\"container\">";
-            // line 3
+            // line 11
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "</div>
     \t</div>
@@ -36,7 +49,7 @@ class __TwigTemplate_9695d395e373d0b8c77e22b8e9eaa7687a6bb253834d883ef864f3440aa
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_d35f59d0f3fa7100b1e72499024339df8dfeb493735925c97db1c3f08882c0ae->leave($__internal_d35f59d0f3fa7100b1e72499024339df8dfeb493735925c97db1c3f08882c0ae_prof);
+        $__internal_02b20c7f4a57a5ba8390c57615cf578d67da013360091dcfe1fc7fb8dc892c48->leave($__internal_02b20c7f4a57a5ba8390c57615cf578d67da013360091dcfe1fc7fb8dc892c48_prof);
 
     }
 
@@ -52,6 +65,6 @@ class __TwigTemplate_9695d395e373d0b8c77e22b8e9eaa7687a6bb253834d883ef864f3440aa
 
     public function getDebugInfo()
     {
-        return array (  30 => 3,  27 => 2,  22 => 1,);
+        return array (  43 => 11,  40 => 10,  36 => 9,  33 => 8,  25 => 2,  22 => 1,);
     }
 }

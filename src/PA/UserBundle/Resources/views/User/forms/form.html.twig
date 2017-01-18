@@ -1,13 +1,13 @@
 {# //iniciamos el formulario y recibe el form q estamos enviando desde view#}
-{{ form_start(form, {'atrr':{'id': id|default('form')}}) }}
+{{ form_start(form, {'attr':{'id': id|default('form')}}) }}
 
 {# //para q nos elavore el formulario#}
     {{ form_widget(form) }}    
     
-    {% if with_submit is not defined or with_submit == true %}
+    {# si  with_submit no está definido o es true coloco el boton para eliminar usuario#}
+    {% if with_submit is not defined or with_submit == true  %}
     <input type="button" value="{{ 'Delete user'|trans }}" class="btn btn-lg btn-block btn-danger" onclick="confirmDelete()" >
     {% endif %}
-     
 
 {{form_end(form)}}
 

@@ -5,3 +5,20 @@ pa_user_user:
 pa_task_task:
     resource: "@PAUserBundle/Resources/config/routes/task.yml"
     prefix:   /task
+    
+# Autentication
+
+pa_user_homepage:
+    path:     /
+    defaults: { _controller: PAUserBundle:User:home }
+
+pa_user_login:
+    path:     /login
+    defaults: { _controller: PAUserBundle:Security:login }
+
+pa_user_login_check:
+    path:     /login_check
+    defaults: { _controller: PAUserBundle:Security:loginCheck }
+
+pa_user_logout:
+    path:     /logout
